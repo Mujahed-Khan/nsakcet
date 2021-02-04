@@ -1,25 +1,70 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';  
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import logo from './logo.svg';  
 
-export default App;
+import './App.css';  
+
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';  
+
+import Createemployee from './Createemployee'  
+
+import EmployeList from './EmployeList'  
+
+import Editemployee from "./Editemployee";  
+
+function App() {  
+
+  return (  
+
+    <div className="App">  
+
+     <Router>    
+
+      <div className="container">    
+
+        <nav className="btn btn-warning navbar navbar-expand-lg navheader">    
+
+          <div className="collapse navbar-collapse" >    
+
+           
+
+            <ul className="navbar-nav mr-auto">    
+              <li className="nav-item">    
+
+                <Link to={'/Createemployee'} className="nav-link">Add Employee</Link>    
+
+              </li>    
+
+              <li className="nav-item">    
+
+                <Link to={'/EmployeList'} className="nav-link">Employee List</Link>    
+
+              </li>    
+
+            </ul>    
+
+          </div>    
+
+        </nav> <br />    
+
+        <Switch>    
+
+          <Route exact path='/Createemployee' component={Createemployee} />    
+
+          <Route path='/edit/:id' component={Editemployee} />    
+
+          <Route path='/EmployeList' component={EmployeList} />    
+
+        </Switch>    
+
+      </div>    
+
+    </Router>    
+
+    </div>  
+
+  );  
+
+}  
+
+export default App;  
