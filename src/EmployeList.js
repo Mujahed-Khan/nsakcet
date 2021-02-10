@@ -1,6 +1,6 @@
 import React from 'react'  
 
-import { Badge, Card, CardBody, CardHeader, Col, Pagination, PaginationItem, PaginationLink, Row, Table } from 'reactstrap';  
+import { Badge, Card, CardBody, CardHeader, Col, Pagination, PaginationItem, PaginationLink, Row, Table } from 'bootstrap';  
 
 import axios from 'axios';  
 

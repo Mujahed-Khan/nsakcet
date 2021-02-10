@@ -2,342 +2,243 @@ import React, { useState, useEffect } from 'react'
 
 import axios from 'axios';  
 
-import { Button, Card, CardBody, CardFooter, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';  
+import { Button, Card, CardBody, CardFooter, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'bootstrap';  
 
-function Editemployee(props) {  
+function Editemployee(props) {
 
-        const [employee, setemployee]= useState({Id:'',Name: '', Department: '', Age: '', City: '', Country: '', Gender: '' });  
+    const [employee, setemployee] = useState({ Id: '', Name: '', Department: '', Age: '', City: '', Country: '', Gender: '' });
 
-        const Url = "http://localhost:62168/api/Hooks/employeedetails?id=" + props.match.params.id;  
+    const Url = "http://localhost:62168/api/Hooks/employeedetails?id=" + props.match.params.id;
 
         
 
-        useEffect(() => {  
+    useEffect(() => {
 
-          const GetData = async () => {  
+        const GetData = async () => {
 
-            const result = await axios(Url);  
+            const result = await axios(Url);
 
-            setemployee(result.data);  
+            setemployee(result.data);
 
             
 
-          };  
+        };
 
         
 
-          GetData();  
+        GetData();
 
-        }, []);  
-
-        
-
-        const UpdateEmployee = (e) => {  
-
-          e.preventDefault();  
-
-          const data = {Id:props.match.params.id, Name:employee.Name, Department: employee.Department, Age: employee.Age, City:employee.City, Country: employee.Country, Gender: employee.Gender };  
-
-          axios.post('http://localhost:62168/api/Hooks/CreateEmp', data)  
-
-            .then((result) => {  
-
-              props.history.push('/EmployeList')  
-
-            });  
-
-        };  
+    }, []);
 
         
 
-        const onChange = (e) => {  
+    const UpdateEmployee = (e) => {
 
-          e.persist();  
+        e.preventDefault();
 
-          setemployee({...employee, [e.target.name]: e.target.value});  
+        const data = { Id: props.match.params.id, Name: employee.Name, Department: employee.Department, Age: employee.Age, City: employee.City, Country: employee.Country, Gender: employee.Gender };
 
-        }  
+        axios.post('http://localhost:62168/api/Hooks/CreateEmp', data)
 
-        
+            .then((result) => {
 
-        return (  
+                props.history.push('/EmployeList')
 
-                <import React, { useState, useEffect } from 'react'  
+            });
 
-import axios from 'axios';  
-
-import { Button, Card, CardBody, CardFooter, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';  
-
-function Editemployee(props) {  
-
-        const [employee, setemployee]= useState({Id:'',Name: '', Department: '', Age: '', City: '', Country: '', Gender: '' });  
-
-        const Url = "http://localhost:62168/api/Hooks/employeedetails?id=" + props.match.params.id;  
+    };
 
         
 
-        useEffect(() => {  
+    const onChange = (e) => {
 
-          const GetData = async () => {  
+        e.persist();
 
-            const result = await axios(Url);  
+        setemployee({ ...employee, [e.target.name]: e.target.value });
 
-            setemployee(result.data);  
+    }
+
+        
+
+    // return (
+
+    //     <import React { useState, useEffect } from 'react'  
+
+    //     import axios from 'axios';  
+
+    //      import { Button, Card, CardBody, CardFooter, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';  
+
+    //     function Editemployee(props) {
+
+    //         const [employee, setemployee] = useState({ Id: '', Name: '', Department: '', Age: '', City: '', Country: '', Gender: '' });
+
+    //         const Url = "http://localhost:62168/api/Hooks/employeedetails?id=" + props.match.params.id;
+
+        
+
+            useEffect(() => {
+
+                const GetData = async () => {
+
+                    const result = await axios(Url);
+
+                    setemployee(result.data);
 
             
 
-          };  
+                };
 
         
 
-          GetData();  
+                GetData();
 
-        }, []);  
-
-        
-
-        const UpdateEmployee = (e) => {  
-
-          e.preventDefault();  
-
-          const data = {Id:props.match.params.id, Name:employee.Name, Department: employee.Department, Age: employee.Age, City:employee.City, Country: employee.Country, Gender: employee.Gender };  
-
-          axios.post('http://localhost:62168/api/Hooks/CreateEmp', data)  
-
-            .then((result) => {  
-
-              props.history.push('/EmployeList')  
-
-            });  
-
-        };  
+            }, []);
 
         
 
-        const onChange = (e) => {  
+    const updateEmployee = (e) => {
 
-          e.persist();  
+        e.preventDefault();
 
-          setemployee({...employee, [e.target.name]: e.target.value});  
+        const data = { Id: props.match.params.id, Name: employee.Name, Department: employee.Department, Age: employee.Age, City: employee.City, Country: employee.Country, Gender: employee.Gender };
 
-        }  
+        axios.post('http://localhost:62168/api/Hooks/CreateEmp', data)
+
+            .then((result) => {
+
+                props.history.push('/EmployeList')
+
+            }
+
+            
 
         
 
-        return (  
+            const onChange = (e) => {
 
-                <React.fragment className="app flex-row align-items-center">  
+                e.persist();
 
-                <Container>  
+                setemployee({ ...employee, [e.target.name]: e.target.value });
 
-                  <Row className="justify-content-center">  
+            }
 
-                    <Col md="12" lg="10" xl="8">  
+        
 
-                      <Card className="mx-4">  
+return (
 
-                        <CardBody className="p-4">  
+    <div className="app flex-row align-items-center">
 
-                          <Form onSubmit={UpdateEmployee}>  
+        <Container>
 
-                            <h1>Update Employee</h1>  
+            <Row className="justify-content-center">
+
+                <Col md="12" lg="10" xl="8">
+
+                    <Card className="mx-4">
+
+                        <CardBody className="p-4">
+
+                            <Form onSubmit={UpdateEmployee}>
+
+                                <h1>Update Employee</h1>
 
                         
 
-                            <InputGroup className="mb-3">  
+                                <InputGroup className="mb-3">
 
             
 
-                              <Input type="text" name="Name" id="Name" placeholder="Name" value={employee.Name} onChange={ onChange }  />  
+                                    <Input type="text" name="Name" id="Name" placeholder="Name" value={employee.Name} onChange={onChange} />
 
-                            </InputGroup>  
+                                </InputGroup>
 
-                             <InputGroup className="mb-3">  
-
-            
-
-                              <Input type="text" placeholder="Department" name="Department" id="Department" value={employee.Department} onChange={ onChange }/>  
-
-                            </InputGroup>  
-
-                            <InputGroup className="mb-3">  
+                                <InputGroup className="mb-3">
 
             
 
-                              <Input type="text" placeholder="Age" name="Age" id="Age"  value={employee.Age} onChange={ onChange }  />  
+                                    <Input type="text" placeholder="Department" name="Department" id="Department" value={employee.Department} onChange={onChange} />
 
-                            </InputGroup>  
+                                </InputGroup>
 
-                            <InputGroup className="mb-4">  
-
-            
-
-                              <Input type="text" placeholder="City" name="City" id="City" value={employee.City} onChange={ onChange }  />  
-
-                            </InputGroup>  
-
-                            <InputGroup className="mb-4">  
+                                <InputGroup className="mb-3">
 
             
 
-                              <Input type="text" placeholder="Country" name="Country" id="Country" value={employee.Country} onChange={ onChange } />  
+                                    <Input type="text" placeholder="Age" name="Age" id="Age" value={employee.Age} onChange={onChange} />
 
-                            </InputGroup>  
+                                </InputGroup>
 
-                            <InputGroup className="mb-4">   
+                                <InputGroup className="mb-4">
 
             
 
-                               <Input type="text" placeholder="Gender" name="Gender" id= "Gender" value={employee.Gender} onChange={ onChange } />  
+                                    <Input type="text" placeholder="City" name="City" id="City" value={employee.City} onChange={onChange} />
 
-                            </InputGroup>   
+                                </InputGroup>
+
+                                <InputGroup className="mb-4">
+
+            
+
+                                    <Input type="text" placeholder="Country" name="Country" id="Country" value={employee.Country} onChange={onChange} />
+
+                                </InputGroup>
+
+                                <InputGroup className="mb-4">
+
+            
+
+                                    <Input type="text" placeholder="Gender" name="Gender" id="Gender" value={employee.Gender} onChange={onChange} />
+
+                                </InputGroup>
 
                              
 
-                      <CardFooter className="p-4">  
+                                <CardFooter className="p-4">
 
-                          <Row>  
+                                    <Row>
 
-                            <Col xs="12" sm="6">  
+                                        <Col xs="12" sm="6">
 
-                              <Button type="submit" className="btn btn-info mb-1" block><span>Save</span></Button>  
+                                            <Button type="submit" className="btn btn-info mb-1" block><span>Save</span></Button>
 
-                            </Col>  
+                                        </Col>
 
-                            <Col xs="12" sm="6">  
+                                        <Col xs="12" sm="6">
 
-                              <Button className="btn btn-info mb-1" block><span>Cancel</span></Button>  
+                                            <Button className="btn btn-info mb-1" block><span>Cancel</span></Button>
 
-                            </Col>  
+                                        </Col>
 
-                          </Row>  
+                                    </Row>
 
-                        </CardFooter>  
+                                </CardFooter>
 
-                          </Form>  
+                            </Form>
 
-                        </CardBody>                 
+                        </CardBody>
 
-                      </Card>  
+                    </Card>
 
-                    </Col>  
+                </Col>
 
-                  </Row>  
+            </Row>
 
-                </Container> 
-              </React.fragment>  
+        </Container>
+    </div>
 
-        )  
-
-}  
+    )
+}
+    
+    
 
   
 
-export default Editemployee   className="app flex-row align-items-center">  
+ export default Editemployee  
+                     
 
-                <Container>  
+          
 
-                  <Row className="justify-content-center">  
 
-                    <Col md="12" lg="10" xl="8">  
 
-                      <Card className="mx-4">  
 
-                        <CardBody className="p-4">  
-
-                          <Form onSubmit={UpdateEmployee}>  
-
-                            <h1>Update Employee</h1>  
-
-                        
-
-                            <InputGroup className="mb-3">  
-
-        
-                              <Input type="text" name="Name" id="Name" placeholder="Name" value={employee.Name} onChange={ onChange }  />  
-
-                            </InputGroup>  
-
-                             <InputGroup className="mb-3">  
-
-            
-
-                              <Input type="text" placeholder="Department" name="Department" id="Department" value={employee.Department} onChange={ onChange }/>  
-
-                            </InputGroup>  
-
-                            <InputGroup className="mb-3">  
-
-            
-
-                              <Input type="text" placeholder="Age" name="Age" id="Age"  value={employee.Age} onChange={ onChange }  />  
-
-                            </InputGroup>  
-
-                            <InputGroup className="mb-4">  
-
-            
-
-                              <Input type="text" placeholder="City" name="City" id="City" value={employee.City} onChange={ onChange }  />  
-
-                            </InputGroup>  
-
-                            <InputGroup className="mb-4">  
-
-            
-
-                              <Input type="text" placeholder="Country" name="Country" id="Country" value={employee.Country} onChange={ onChange } />  
-
-                            </InputGroup>  
-
-                            <InputGroup className="mb-4">   
-
-            
-
-                               <Input type="text" placeholder="Gender" name="Gender" id= "Gender" value={employee.Gender} onChange={ onChange } />  
-
-                            </InputGroup>   
-
-                             
-
-                      <CardFooter className="p-4">  
-
-                          <Row>  
-
-                            <Col xs="12" sm="6">  
-
-                              <Button type="submit" className="btn btn-info mb-1" block><span>Save</span></Button>  
-
-                            </Col>  
-
-                            <Col xs="12" sm="6">  
-
-                              <Button className="btn btn-info mb-1" block><span>Cancel</span></Button>  
-
-                            </Col>  
-
-                          </Row>  
-
-                        </CardFooter>  
-
-                          </Form>  
-
-                        </CardBody>                 
-
-                      </Card>  
-
-                    </Col>  
-
-                  </Row>  
-
-                </Container>  
-
-              </div>  
-
-        )  
-
-}  
-
-  
-
-export default Editemployee  

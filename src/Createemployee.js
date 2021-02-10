@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 
 import axios from 'axios';  
 
-import {className, Button, Card, CardBody, CardFooter, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';  
+import {className, Button, Card, CardBody, CardFooter, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'bootstrap';  
 
 function Createemployee(props) {  
 
